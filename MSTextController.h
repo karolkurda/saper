@@ -3,7 +3,8 @@
 #include "MinesweeperBoard.h"
 #include "MSBoardTextView.h"
 
-class TestGitHuba{};
+class GitHub{};
+
 class MSTextController {
     MinesweeperBoard &board;
     MSBoardTextView &view;
