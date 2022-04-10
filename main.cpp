@@ -7,7 +7,7 @@ int main()
 {
     MinesweeperBoard board (2, 2, GameMode::EASY);
     board.debug_display();
-    MSBoardTextView view (board);
+    MSBoardTextView view (bofdsard);
     MSTextController ctrl (board, view );
 
     ctrl.play();
