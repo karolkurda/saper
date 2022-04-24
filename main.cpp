@@ -1,45 +1,45 @@
+#include "SFML/Window.hpp"
 #include "MinesweeperBoard.h"
 #include "MSBoardTextView.h"
-#include "MSTextController.h"
+#include "MouseController.h"
 
 
-int main()
-{
-    MinesweeperBoard board (2, 2, GameMode::EASY);
-    board.debug_display();
-    MSBoardTextView view (board);
-    MSTextController ctrl (board, view );
 
-    ctrl.play();
-}
-/*
-int main()
-{
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Grafika w C++/SFML");
-    window.setVerticalSyncEnabled(false);
+int main() {
+    const int fieldWidth = 100; //szerokosc pola, prosze nie zmieniac
+    const int fieldHeight = 100; //wysokosc pola, prosze nie zmieniac
+    const int boardWidth = 10; //szerokosc planszy wprowadzamy tutaj
+    const int boardHeight = 10; //wysokosc planszy wprowadzamy tutaj
+
+
+    sf::RenderWindow window(sf::VideoMode(fieldWidth * boardWidth, fieldHeight * boardHeight), "SAPER", sf::Style::Titlebar | sf::Style::Close);
     window.setFramerateLimit(30);
 
-    MinesweeperBoard board(7, 4, DEBUG);
-    MSSFMLView view (board);  // przekazujemy przez referencję planszę jako argument konstruktora
+    MinesweeperBoard board(boardWidth, boardHeight, DEBUG); //tutaj zmieniamy tryb
+    MSSFMLView view (board);
+    MouseController ctrl (view,board);
 
-    // symulujemy rozgrywkę
-    board.toggleFlag(0,0);
-    board.revealField(2,3);
+    ctrl.playbymouse(window);
 
-    while (window.isOpen())
-    {
+    while (window.isOpen()) {
+
         sf::Event event{};
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
                 window.close();
+                continue;
+            }
+            if (event.type == sf::Event::Resized) {
+                continue;
+            }
+
         }
 
         window.clear();
         view.draw(window);
         window.display();
+
     }
 
     return 0;
 }
-*/

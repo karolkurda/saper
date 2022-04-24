@@ -3,12 +3,12 @@
 #include "MinesweeperBoard.h"
 #include "MSBoardTextView.h"
 
-
 class MSTextController {
+
     MinesweeperBoard &board;
     MSBoardTextView &view;
 public:
-    MSTextController(MinesweeperBoard &board, MSBoardTextView &view);
+    MSTextController(MinesweeperBoard &board, MSBoardTextView &view2);
     void play();
 };
 

@@ -1,11 +1,12 @@
 #include "MSTextController.h"
 #include "MinesweeperBoard.h"
 #include "MSBoardTextView.h"
+#include "MSTextController.h"
 
 using namespace std;
-MSTextController::MSTextController(MinesweeperBoard &board, MSBoardTextView &view):board(board), view(view){
-
+MSTextController::MSTextController(MinesweeperBoard &board, MSBoardTextView &view2):board(board), view(view2){
 }
+
 void MSTextController::play() {
     view.display();
     while (board.getGameState() == RUNNING) {
@@ -14,8 +15,7 @@ void MSTextController::play() {
         cout << "Choose row, then choose column: " << std::endl;
         cin >> row >> col;
         cout << "What do you want to do? \n";
-        cout
-                << "If you want to reveal the field, type <r>.\nIf you want to flag the field, type <f> \n(Please make sure that you're using lowercase letters): ";
+        cout << "If you want to reveal the field, type <r>.\nIf you want to flag the field, type <f> \n(Please make sure that you're using lowercase letters): ";
         cin >> choice;
 
             if (choice == 'r') {
@@ -34,4 +34,6 @@ void MSTextController::play() {
         }
         if (board.getGameState() == FINISHED_LOSS) cout << "LOSE" << endl;
         if (board.getGameState() == FINISHED_WIN) cout << "WIN" << endl;
+
     }
+

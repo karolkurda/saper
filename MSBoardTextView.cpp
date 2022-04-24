@@ -1,11 +1,10 @@
 #include <iostream>
-#include "MSBoardTextView.h"
 #include "MinesweeperBoard.h"
+#include "MSBoardTextView.h"
 
-MSBoardTextView::MSBoardTextView (MinesweeperBoard & board ) : board(board){
+MSBoardTextView::MSBoardTextView(MinesweeperBoard &board) : board(board){
 
-}
-
+};
 void MSBoardTextView::display()
 {
     for (int row = 0; row<board.getBoardHeight(); row++)

@@ -2,7 +2,6 @@
 #define MineSweeeperBoard_H__
 #include "Array2D.h"
 
-
 enum GameMode  { DEBUG, EASY, NORMAL, HARD };
 enum GameState { RUNNING, FINISHED_WIN, FINISHED_LOSS };
 
@@ -13,20 +12,20 @@ struct Field
     bool isRevealed;
 };
 
-
 class MinesweeperBoard
 {
-    Array2D<Field>board{100,100};
+    Array2D<Field>board{100, 100};
     int width;
     int height;
     GameMode mode;
     GameState state;
-
+    int UnrevealedCount();
+    void moveMine(int r, int c);
+    bool firstMove();
 
 public:
-
-    MinesweeperBoard(int width, int height, GameMode mode);
-    void debug_display() const;
+    MinesweeperBoard(int height, int width, GameMode mode);
+    void debug_display();
     bool is_inside (int row, int col)const;
     int getBoardWidth() const;
     int getBoardHeight() const;
@@ -39,10 +38,6 @@ public:
     bool isRevealed(int row, int col);
     char getFieldInfo(int row, int col) const;
     GameState getGameState();
-
-    bool firstMove();
-
-
 };
 
 
